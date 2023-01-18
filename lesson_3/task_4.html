@@ -16,11 +16,7 @@
     const sumNambers = (num1, num2) => num1 + num2;
     const differenceNambers = (num1, num2) => {
       var difference = 0
-      if (num1 > num2) {
-       difference = num1 - num2;
-      } else {
-       difference = num2 - num1;
-      }
+      num1 > num2 ? difference = num1 - num2 : difference = num2 - num1;
       return difference;
     }
     const productOfNumbers = (num1, num2) => num1 * num2;
