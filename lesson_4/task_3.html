@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var arr = [];
+    for (var i = 0; i < 5; i++) {
+      arr[i] = Math.floor(Math.random() * 10);
+    }
+    console.log(arr);
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+    console.log(`Сумма элементов массива равна ${sum}`);
+    let min = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+    console.log(`Минимальное число массива ${min}`);
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 3) {
+        console.log("В этом массиве есть число 3");
+        break;
+      } 
+      if (arr[i] === arr[arr.length - 1]) {
+        console.log("В этом массиве нет числа 3");
+        break;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
