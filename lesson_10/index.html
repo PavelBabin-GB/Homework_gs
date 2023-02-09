@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+.content{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+} 
+.content_div {
+border: 1px solid black;
+}
+.cont_par {
+  width: 300px;
+color: blue;
+}
+.content_img{
+  width: 150px;
+  height: 150px;
+}
+  </style>
+</head>
+<body>
+  <div class="content"></div>
+
+
+<script src="data.js"></script>
+<script>
+const cont = document.querySelector('.content');
+const data = JSON.parse(dataInfo);
+
+data.forEach(element => {
+const divEl = document.createElement('div');
+divEl.classList.add('content_div')
+
+const textEl = document.createElement('h3');
+textEl.classList.add('content_text');
+textEl.textContent = element.question;
+
+const parEl = document.createElement('p');
+parEl.classList.add('cont_par')
+parEl.textContent = element.category.title;
+
+const imgEl = document.createElement('img');
+imgEl.classList.add('content_img');
+imgEl.setAttribute('alt', 'photo');
+imgEl.src = element.img_answer;
+
+divEl.appendChild(textEl);
+divEl.appendChild(parEl);
+divEl.appendChild(imgEl);
+cont.appendChild(divEl);
+});
+</script>
+</body>
+</html>
