@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="player" >
+    <video class="video" src="./video/output.lq.mp4"></video>
+    <div class="player-batoon">
+      <img class="play" width="50" height="50" src="./img/Vector.svg" alt="play">
+      <img class="pause" width="50" height="50" src="./img/Group 1.svg" alt="pause">
+      <input class="range" type="range" value="0">
+      <input class="volume" type="range" value="50">
+    </div>
+  </div>
+
+  <script>
+    const volumeEl = document.querySelector('.volume')
+    const videoEl = document.querySelector('.video');
+    const playEl = document.querySelector('.play');
+    const pauseEl = document.querySelector('.pause');
+    const rangeEl = document.querySelector('.range');
+    pauseEl.style.display = "none"
+
+    playEl.addEventListener('click', function (e) {
+      videoEl.play();
+      playEl.style.display = "none";
+      pauseEl.style.display = "unset"
+      videoPlay = setInterval(function () {
+        // Создаём переменную времени видео
+        let videoTime = Math.round(videoEl.currentTime);
+        console.log(videoTime);
+        // Создаём переменную всего времени видео
+        let videoLength = Math.round(videoEl.duration)
+        // Вычисляем длину дорожки
+        rangeEl.value = (videoTime * 100) / videoLength;
+      }, 10)
+
+    });
+    pauseEl.addEventListener('click', function (e) {
+      videoEl.pause();
+      playEl.style.display = "unset";
+      pauseEl.style.display = "none"
+      console.log(videoEl.currentTime);
+      clearInterval(videoPlay)
+    });
+
+    volumeEl.addEventListener('input', function (e) {
+      videoEl.volume = volumeEl.value / 100;
+      console.log(videoEl.volume);
+    });
+
+    pauseEl.addEventListener('click', function (e) {
+      videoEl.pause();
+      console.log(videoEl.currentTime);
+      clearInterval(videoPlay)
+    });
+
+  </script>
+</body>
+
+</html>
